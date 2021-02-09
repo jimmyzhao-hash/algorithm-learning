@@ -96,15 +96,43 @@ public class Main {
         return true;
     }
 
+    // check duplicate number in the integer array.
+
+    public static boolean dupNumber(int [] numbers){
+        if(numbers == null) return false;
+        int i = 0;
+        int j = 0;
+        while (j < numbers.length -1){
+            if (numbers[j] != i)
+                j++;
+            else {
+                if (numbers[j] == numbers[i])
+                    return true;
+                else{
+                    numbers[j] = numbers[i];
+                    numbers[i] = i;
+                    i++;
+                    j = i;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
     public static void main(String[] args) {
 	// write your code here
         int [] numbers = new int[] {2,7,11,15,17};
+        int [] numberdup = new int[] {2,3,1,0,2,5};
         int [] indexpair = twosum(numbers, 17);
         int target = 5;
         int [] rootsqure = squrerootsum(target);
         String words = "leetcode";
         String newWords = reverseVowels(words.toCharArray());
         validPalindrome("abcba");
+        boolean dup = dupNumber(numbers);
+        dup = dupNumber(numberdup);
         System.out.println(indexpair[0]+indexpair[1]);
         System.out.println(rootsqure[0]+rootsqure[1]);
     }
