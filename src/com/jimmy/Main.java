@@ -2,8 +2,26 @@ package com.jimmy;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Stack;
 
 public class Main {
+
+    private static Stack<Integer> in = new Stack<Integer>();
+    private static Stack<Integer> out = new Stack<Integer>();
+
+    public static void push(int num){
+        in.push(num);
+    }
+
+    public static int pop() throws Exception {
+        if(out.isEmpty())
+            while(!in.isEmpty())
+                out.push(in.pop());
+        if(out.isEmpty())
+            throw new Exception("queue is empty");
+
+        return (out.pop());
+    }
 
     public static int[] twosum(int[] numbers, int target) {
         int index1 = 0;
@@ -152,6 +170,16 @@ public class Main {
         boolean dup = dupNumber(numbers);
         dup = dupNumber(numberdup);
         boolean f = find(matrix,23);
+        push(1);
+        push(2);
+        push(3);
+        push(4);
+        try {
+            int outvaiable = pop();
+            System.out.println(outvaiable);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(indexpair[0]+indexpair[1]);
         System.out.println(rootsqure[0]+rootsqure[1]);
     }
