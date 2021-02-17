@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Stack;
 
 
+
 public class Main {
 
     private static Stack<Integer> in = new Stack<>();
@@ -190,6 +191,9 @@ public class Main {
         MinStack.push(3);
         MinStack.push(1);
         int m = MinStack.min();
+        MaxHeap maxheap = new MaxHeap();
+        int [] nums = {4,5,7,2,3,0,11,13,19};
+        maxheap.GetKthNumber(nums,5);
         System.out.println(indexpair[0]+indexpair[1]);
         System.out.println(rootsqure[0]+rootsqure[1]);
     }
