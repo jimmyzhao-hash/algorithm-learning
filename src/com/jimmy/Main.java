@@ -4,10 +4,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Stack;
 
+
 public class Main {
 
-    private static Stack<Integer> in = new Stack<Integer>();
-    private static Stack<Integer> out = new Stack<Integer>();
+    private static Stack<Integer> in = new Stack<>();
+    private static Stack<Integer> out = new Stack<>();
+    //private static MinStack minStack;
+
+
 
     public static void push(int num){
         in.push(num);
@@ -180,6 +184,12 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MinStack.push(4);
+        MinStack.push(5);
+        MinStack.push(0);
+        MinStack.push(3);
+        MinStack.push(1);
+        int m = MinStack.min();
         System.out.println(indexpair[0]+indexpair[1]);
         System.out.println(rootsqure[0]+rootsqure[1]);
     }
