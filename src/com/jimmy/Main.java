@@ -1,9 +1,6 @@
 package com.jimmy;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Stack;
-
+import java.util.*;
 
 
 public class Main {
@@ -13,7 +10,27 @@ public class Main {
     //private static MinStack minStack;
 
 
+    public static int countpair(int [] nums){
 
+        Map<Integer,Integer> unique = new HashMap<>();
+        for (int num : nums) {
+            if(unique.containsKey(nums)){
+                unique.put(num,unique.get(nums)+1);
+            }
+            else {
+                unique.put(num,1);
+            }
+        }
+        int count = 0;
+        for (int num : unique.values()){
+            if (num % 2 == 0)
+                count += num / 2;
+            else
+                count += (num - 1) / 2;
+
+        }
+        return count;
+    }
     public static void push(int num){
         in.push(num);
     }
