@@ -176,11 +176,24 @@ public class Main {
         return false;
     }
 
+    public static ArrayList<Integer> getWindowMax(int[] nums, int size){
+        if (nums == null || size <= 0) return null;
+        ArrayList<Integer> ret = new ArrayList<>();
+        for (int i = 0; i <= nums.length - size; i++){
+            PriorityQueue<Integer> maxHeap = new PriorityQueue<>(((o1, o2) -> o2-o1));
+            for (int j = 0; j<size; j++){
+                maxHeap.add(nums[i+j]);
+            }
+            ret.add(maxHeap.peek());
+        }
+        return ret;
+    }
 
 
     public static void main(String[] args) {
 	// write your code here
         int [] numbers = new int[] {2,7,11,15,17};
+        var windowMax = getWindowMax(numbers, 3);
         int [] numberdup = new int[] {2,3,1,0,2,5};
         int [] indexpair = twosum(numbers, 17);
         int [][] matrix = new int[][] {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
