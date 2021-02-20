@@ -191,7 +191,7 @@ public class Main {
 
     public static String ReplaceSpace(StringBuffer str){
         if(str == null) return null;
-        int p0, p1 = 0;
+        int p2, p1 = 0;
         for(int i =0; i<str.length(); i++){
             if(str.charAt(i) == ' '){
                 str.append("  ");
@@ -216,6 +216,7 @@ public class Main {
         int [] numbers = new int[] {2,7,11,15,17};
         StringBuffer strBuffer = new StringBuffer("A B CD");
         String str = ReplaceSpace(strBuffer);
+        System.out.println(str);
         var windowMax = getWindowMax(numbers, 3);
         int [] numberdup = new int[] {2,3,1,0,2,5};
         int [] indexpair = twosum(numbers, 17);
