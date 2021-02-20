@@ -238,7 +238,24 @@ public class Main {
         return ret;
     }
 
+    static void countSwaps(int[] a) {
+        int count = 0;
+        for(int i = 0; i < a.length; i++){
+            for(int j = 0; j < a.length -1; j++){
+                if (a[j] > a[j+1]){
+                    count ++;
+                    int temp = 0;
+                    temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
+                }
+            }
+        }
+        System.out.printf("Array is sorted in %d swaps.",count);
+        System.out.printf("First Element: %d", a[0]);
+        System.out.printf("Last Element: %d", a[a.length-1]);
 
+    }
 
 
     public static void main(String[] args) {
