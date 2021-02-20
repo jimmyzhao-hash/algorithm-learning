@@ -136,6 +136,15 @@ public class Main {
         return true;
     }
 
+    public static ArrayList<Integer> printListReverse(LinkNode linkNode){
+        ArrayList<Integer> ret = new ArrayList<>();
+        if (linkNode != null){
+            ret.addAll(printListReverse(linkNode.next));
+            ret.add(linkNode.value);
+        }
+        return ret;
+    }
+
 
 
     public static boolean dupNumber(int [] numbers){
@@ -213,6 +222,18 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        LinkNode node1 = new LinkNode();
+        node1.value = 1;
+        LinkNode node2 = new LinkNode();
+        node2.value = 2;
+        LinkNode node3 = new LinkNode();
+        node3.value = 3;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = null;
+
+        ArrayList<Integer> reverseList = printListReverse(node1);
+
         int [] numbers = new int[] {2,7,11,15,17};
         StringBuffer strBuffer = new StringBuffer("A B CD");
         String str = ReplaceSpace(strBuffer);
