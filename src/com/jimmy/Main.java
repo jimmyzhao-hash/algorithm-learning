@@ -219,6 +219,27 @@ public class Main {
         return str.toString();
     }
 
+    private static ArrayList<Integer> reverseLink(LinkNode node){
+        LinkNode head = new LinkNode();
+        while(node!=null){
+            LinkNode memo = new LinkNode();
+            memo = node.next;
+            node.next = head.next;
+            head.next = node;
+            node = memo;
+        }
+        //delete temporary head.
+        node = head.next;
+        ArrayList<Integer> ret = new ArrayList<>();
+        while(node!=null){
+            ret.add(node.value);
+            node = node.next;
+        }
+        return ret;
+    }
+
+
+
 
     public static void main(String[] args) {
 	// write your code here
@@ -232,7 +253,9 @@ public class Main {
         node2.next = node3;
         node3.next = null;
 
-        ArrayList<Integer> reverseList = printListReverse(node1);
+        ArrayList<Integer> list = reverseLink(node1);
+
+        //ArrayList<Integer> reverseList = printListReverse(node1);
 
         int [] numbers = new int[] {2,7,11,15,17};
         StringBuffer strBuffer = new StringBuffer("A B CD");
