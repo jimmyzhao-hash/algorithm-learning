@@ -189,10 +189,33 @@ public class Main {
         return ret;
     }
 
+    public static String ReplaceSpace(StringBuffer str){
+        if(str == null) return null;
+        int p0, p1 = 0;
+        for(int i =0; i<str.length(); i++){
+            if(str.charAt(i) == ' '){
+                str.append("  ");
+                p1 = i;
+                p2 = str.length()-1;
+                while(p2 > p1)
+                {
+                    str.setCharAt(p2, str.charAt(p2-2));
+                    p2 --;
+                }
+                str.setCharAt(p1,'%');
+                str.setCharAt(p1+1,'2');
+                str.setCharAt(p1+2,'0');
+            }
+        }
+        return str.toString();
+    }
+
 
     public static void main(String[] args) {
 	// write your code here
         int [] numbers = new int[] {2,7,11,15,17};
+        StringBuffer strBuffer = new StringBuffer("A B CD");
+        String str = ReplaceSpace(strBuffer);
         var windowMax = getWindowMax(numbers, 3);
         int [] numberdup = new int[] {2,3,1,0,2,5};
         int [] indexpair = twosum(numbers, 17);
