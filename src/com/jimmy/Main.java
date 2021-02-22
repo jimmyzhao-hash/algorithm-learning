@@ -220,9 +220,9 @@ public class Main {
     }
 
     private static ArrayList<Integer> reverseLink(LinkNode node){
-        LinkNode head = new LinkNode();
+        LinkNode head = new LinkNode(-1);
         while(node!=null){
-            LinkNode memo = new LinkNode();
+            LinkNode memo = new LinkNode(-1);
             memo = node.next;
             node.next = head.next;
             head.next = node;
@@ -276,18 +276,41 @@ public class Main {
         return head;
     }
 
+    public static TreeLinkNode findNext(TreeLinkNode pNode){
+        if(pNode == null) return null;
+        TreeLinkNode node;
+        if (pNode.right != null){
+            node = pNode.right;
+            while(node.left!=null){
+                node = node.left;
+            }
+        }
+        else{
+            while(pNode.next != null){
+                node = pNode.next;
+                if( node.next.left == node )
+                    return node;
+            }
+        }
+        return null;
+
+    }
+
+
+
 
     public static void main(String[] args) {
 	// write your code here
-        LinkNode node1 = new LinkNode();
+
+        LinkNode node1 = new LinkNode(1);
         node1.value = 1;
-        LinkNode node2 = new LinkNode();
+        LinkNode node2 = new LinkNode(2);
         node2.value = 2;
-        LinkNode node3 = new LinkNode();
+        LinkNode node3 = new LinkNode(3);
         node3.value = 3;
-        LinkNode node4 = new LinkNode();
+        LinkNode node4 = new LinkNode(4);
         node4.value = 4;
-        LinkNode node5 = new LinkNode();
+        LinkNode node5 = new LinkNode(5);
         node5.value = 5;
         node1.next = node2;
         node2.next = node3;
