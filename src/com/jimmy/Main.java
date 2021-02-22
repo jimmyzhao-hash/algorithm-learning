@@ -257,6 +257,25 @@ public class Main {
 
     }
 
+    public static LinkNode deleteNode(LinkNode node, int value){
+        if (node == null) return null;
+        LinkNode head = node;
+        while(node.next != null){
+            if (value == node.next.value){
+                if(node.next.next != null){
+                    node.next = node.next.next;
+                    node = node.next;
+                }
+                else{
+                    node.next = null;
+                }
+                break;
+            }
+            node = node.next;
+        }
+        return head;
+    }
+
 
     public static void main(String[] args) {
 	// write your code here
@@ -266,9 +285,18 @@ public class Main {
         node2.value = 2;
         LinkNode node3 = new LinkNode();
         node3.value = 3;
+        LinkNode node4 = new LinkNode();
+        node4.value = 4;
+        LinkNode node5 = new LinkNode();
+        node5.value = 5;
         node1.next = node2;
         node2.next = node3;
-        node3.next = null;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = null;
+
+        deleteNode(node1, 5);
+        deleteNode(node1, 3);
 
         ArrayList<Integer> list = reverseLink(node1);
 
