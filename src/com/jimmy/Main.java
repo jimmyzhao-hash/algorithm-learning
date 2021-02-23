@@ -3,7 +3,7 @@ package com.jimmy;
 import java.util.*;
 
 
-public class Main {
+public class Main<pubilc> {
 
     private static Stack<Integer> in = new Stack<>();
     private static Stack<Integer> out = new Stack<>();
@@ -326,10 +326,39 @@ public class Main {
         return ret;
     }
 
+    public static int [] swap(int[] nums, int i, int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+        return nums;
+    }
+
+    public static int[] selectsort(int[] nums, int startp){
+        if(nums == null||nums.length-startp<2)
+            return nums;
+        else{
+            int N = nums.length;
+            int min = nums[startp];
+            int i = startp;
+            int j = startp;
+            while(i < N){
+                if (nums[i] < min){
+                    min = nums[i];
+                    j = i;
+                }
+                i++;
+            }
+            swap(nums,startp,j);
+            return selectsort(nums, startp+1);
+        }
+
+    }
+
     public static void main(String[] args) {
 	// write your code here
 
         int[] prices = {1,12,5,111,200,1000,10};
+        int [] sortedPrices = selectsort(prices, 0);
         int ret = maxToys(prices, 50);
         LinkNode node1 = new LinkNode(1);
         node1.value = 1;
