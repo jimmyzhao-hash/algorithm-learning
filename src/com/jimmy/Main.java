@@ -296,12 +296,41 @@ public class Main {
 
     }
 
+    static int maxToys(int[] prices, int k){
+        if(prices==null||k<=0) return 0;
+        PriorityQueue<Integer> sortedPrices = new PriorityQueue<>();
+        for(int i = 0; i<prices.length; i++){
+            if(prices[i] <= k) sortedPrices.add(prices[i]);
+        }
+        int count = 0;
+        int cost = 0;
+        int length = sortedPrices.size();
+        for(int i = 0; i<length; i++){
+            cost += sortedPrices.poll();
+            if (cost > k)
+                break;
+            count ++;
+        }
+        return count;
+    }
 
+    public static int compare(Player a, Player b){
+        int ret = -2;
+        if(a.score > b.score)
+            ret = -1;
+        if(a.score < b.score)
+            ret = 1;
+        if(a.score == b.score)
+            ret = a.name.compareTo(b.name);
 
+        return ret;
+    }
 
     public static void main(String[] args) {
 	// write your code here
 
+        int[] prices = {1,12,5,111,200,1000,10};
+        int ret = maxToys(prices, 50);
         LinkNode node1 = new LinkNode(1);
         node1.value = 1;
         LinkNode node2 = new LinkNode(2);
