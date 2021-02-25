@@ -1,5 +1,8 @@
 package com.jimmy;
 
+import com.sun.source.tree.Tree;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.*;
 
 
@@ -354,32 +357,76 @@ public class Main<pubilc> {
 
     }
 
+    public static int heightOfBinaryTree(TreeLinkNode node){
+        if (node == null)
+            return 0;
+        int leftTreeHeight = 0;
+        int rightTreeHeight = 0;
+        if (node.left != null)
+            leftTreeHeight = heightOfBinaryTree(node.left) + 1;
+        if (node.right!= null)
+            rightTreeHeight = heightOfBinaryTree(node.right) + 1;
+        int height = (rightTreeHeight > leftTreeHeight ? rightTreeHeight : leftTreeHeight);
+        return height;
+    }
+
+    public static TreeLinkNode LCA(TreeLinkNode root, int val1, int val2){
+        if(root == null) return null;
+        if(root.val > val1 && root.val > val2)
+            return LCA(root.left, val1, val2);
+        if(root.val < val1 && root.val < val2)
+            return LCA(root.right, val1, val2);
+        return root;
+    }
+
+    public static boolean checkBST(TreeLinkNode root) {
+        if(root == null) return false;
+        if(root.left.val >= root.val || root.right.val <= root.val)
+            return false;
+        else
+            return (checkBST(root.left) | checkBST(root.right));
+
+    }
+
+
     public static void main(String[] args) {
 	// write your code here
 
+        TreeLinkNode root = new TreeLinkNode(3);
+        TreeLinkNode node1 = new TreeLinkNode(9);
+        TreeLinkNode node2 = new TreeLinkNode(20);
+        TreeLinkNode node3 = new TreeLinkNode(5);
+        TreeLinkNode node4 = new TreeLinkNode(17);
+
+        root.left = node1;
+        root.right = node2;
+        node2.left = node3;
+        node2.right = node4;
+
+        int height = heightOfBinaryTree(root);
+
+
         int[] prices = {1,12,5,111,200,1000,10};
-        int [] sortedPrices = selectsort(prices, 0);
         int ret = maxToys(prices, 50);
-        LinkNode node1 = new LinkNode(1);
-        node1.value = 1;
-        LinkNode node2 = new LinkNode(2);
-        node2.value = 2;
-        LinkNode node3 = new LinkNode(3);
-        node3.value = 3;
-        LinkNode node4 = new LinkNode(4);
-        node4.value = 4;
-        LinkNode node5 = new LinkNode(5);
-        node5.value = 5;
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = null;
+        LinkNode Treenode1 = new LinkNode(1);
+        Treenode1.value = 1;
+        LinkNode Treenode2 = new LinkNode(2);
+        Treenode2.value = 2;
+        LinkNode Treenode3 = new LinkNode(3);
+        Treenode3.value = 3;
+        LinkNode Treenode4 = new LinkNode(4);
+        Treenode4.value = 4;
+        LinkNode Treenode5 = new LinkNode(5);
+        Treenode5.value = 5;
+        Treenode1.next= Treenode2;
+        Treenode2.next = Treenode3;
+        Treenode3.next = Treenode4;
+        Treenode4.next = Treenode5;
+        Treenode5.next = null;
 
-        deleteNode(node1, 5);
-        deleteNode(node1, 3);
 
-        ArrayList<Integer> list = reverseLink(node1);
+
+        //ArrayList<Integer> list = reverseLink(node1);
 
         //ArrayList<Integer> reverseList = printListReverse(node1);
 
